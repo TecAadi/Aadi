@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aadi Singh | Data Analyst & ML Enthusiast</title>
+  <meta name="description" content="Portfolio of Aadi Singh – Data Analyst and Machine Learning enthusiast passionate about turning raw data into meaningful insights." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">AS<span class="dot">.</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <canvas id="hero-bg-canvas"></canvas>
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span> Open to Opportunities
+        </div>
+        <h1 class="hero-name">Aadi Singh</h1>
+        <h2 class="hero-title">Data Analyst <span class="amp">&amp;</span> ML Enthusiast</h2>
+        <p class="hero-tagline">
+          I can take <span class="tag-highlight" data-stage="0">data</span>
+          <span class="arrow">→</span> <span class="tag-highlight" data-stage="1">clean it</span>
+          <span class="arrow">→</span> <span class="tag-highlight" data-stage="2">analyze it</span>
+          <span class="arrow">→</span> <span class="tag-highlight" data-stage="3">build ML models</span>
+          <span class="arrow">→</span> <span class="tag-highlight" data-stage="4">generate insights</span>
+          <span class="arrow">→</span> <span class="tag-highlight" data-stage="4">communicate results clearly.</span>
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary" id="view-work-btn">View My Work</a>
+          <a href="#contact" class="btn btn-ghost" id="contact-btn">Get In Touch</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">3+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">5+</span>
+            <span class="stat-label">Skills</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Curiosity</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RIGHT SIDE: Data Pipeline Card ── -->
+      <div class="hero-visual">
+        <div class="data-pipeline-card" id="dataPipeline">
+
+          <!-- Card header -->
+          <div class="dpc-header">
+            <div class="dpc-stage-badge">
+              <span class="dpc-stage-icon" id="dpcIcon">📋</span>
+              <span class="dpc-stage-name" id="dpcName">Raw Data</span>
+            </div>
+            <div class="dpc-nav-dots">
+              <span class="dpcnd active"></span>
+              <span class="dpcnd"></span>
+              <span class="dpcnd"></span>
+              <span class="dpcnd"></span>
+              <span class="dpcnd"></span>
+            </div>
+          </div>
+
+          <!-- Stages -->
+          <div class="dpc-body">
+
+            <!-- Stage 0: RAW DATA -->
+            <div class="dpc-stage active" id="dps0">
+              <div class="dps-table">
+                <div class="dps-tr dps-th"><span>ID</span><span>Age</span><span>Salary</span><span>Status</span></div>
+                <div class="dps-tr"><span>001</span><span>25</span><span>45,000</span><span class="cell-null">NaN</span></div>
+                <div class="dps-tr"><span>002</span><span class="cell-null">NaN</span><span>62,000</span><span>Active</span></div>
+                <div class="dps-tr dps-tr-err"><span>003</span><span>−99</span><span>9.99M</span><span>???</span></div>
+                <div class="dps-tr"><span>004</span><span>28</span><span>58,000</span><span>Active</span></div>
+                <div class="dps-tr"><span>005</span><span>31</span><span>71,000</span><span>Churn</span></div>
+              </div>
+              <div class="dps-badge badge-warn">⚠ 3 nulls · 1 outlier · 1 error detected</div>
+            </div>
+
+            <!-- Stage 1: CLEAN IT -->
+            <div class="dpc-stage" id="dps1">
+              <div class="dps-table">
+                <div class="dps-tr dps-th"><span>ID</span><span>Age</span><span>Salary</span><span>Status</span></div>
+                <div class="dps-tr row-removed"><span>002</span><span>—</span><span>62,000</span><span>Active</span></div>
+                <div class="dps-tr row-removed"><span>003</span><span>−99</span><span>9.99M</span><span>???</span></div>
+                <div class="dps-tr row-clean"><span>001</span><span>25</span><span>45,000</span><span>Active ✓</span></div>
+                <div class="dps-tr row-clean"><span>004</span><span>28</span><span>58,000</span><span>Active ✓</span></div>
+                <div class="dps-tr row-clean"><span>005</span><span>31</span><span>71,000</span><span>Churn ✓</span></div>
+              </div>
+              <div class="dps-badge badge-ok">✓ 2 rows removed · Dataset clean &amp; ready</div>
+            </div>
+
+            <!-- Stage 2: ANALYZE IT -->
+            <div class="dpc-stage" id="dps2">
+              <div class="dps-chart">
+                <div class="dps-bars-wrap">
+                  <div class="dps-bar-group"><div class="dps-bar" style="--bh:65%;--bc:#4da3ff;"></div><span>Jan</span></div>
+                  <div class="dps-bar-group"><div class="dps-bar" style="--bh:82%;--bc:#00e5ff;"></div><span>Feb</span></div>
+                  <div class="dps-bar-group"><div class="dps-bar" style="--bh:54%;--bc:#4da3ff;"></div><span>Mar</span></div>
+                  <div class="dps-bar-group"><div class="dps-bar" style="--bh:93%;--bc:#00e5ff;"></div><span>Apr</span></div>
+                  <div class="dps-bar-group"><div class="dps-bar" style="--bh:71%;--bc:#4da3ff;"></div><span>May</span></div>
+                  <div class="dps-bar-group"><div class="dps-bar" style="--bh:88%;--bc:#00e5ff;"></div><span>Jun</span></div>
+                </div>
+                <div class="dps-chart-stats">
+                  <span>Corr: <strong>0.87</strong></span>
+                  <span>Mean: <strong>58.2k</strong></span>
+                  <span>R²: <strong>0.91</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stage 3: BUILD ML MODEL -->
+            <div class="dpc-stage" id="dps3">
+              <div class="dps-ml-wrap">
+                <div class="dps-ring-container">
+                  <svg class="dps-ring-svg" viewBox="0 0 100 100">
+                    <circle class="ring-bg"   cx="50" cy="50" r="38"/>
+                    <circle class="ring-fill" cx="50" cy="50" r="38" id="mlRingFill"/>
+                  </svg>
+                  <div class="dps-ring-label">
+                    <div class="ra-num"><span id="mlAccNum">0</span><span class="pct">%</span></div>
+                    <div class="ra-sub">Accuracy</div>
+                  </div>
+                </div>
+                <div class="dps-ml-stats">
+                  <div class="dps-ml-stat"><span class="ms-key">Model</span><span class="ms-val">Rnd Forest</span></div>
+                  <div class="dps-ml-stat"><span class="ms-key">F1-Score</span><span class="ms-val c-purple">0.91</span></div>
+                  <div class="dps-ml-stat"><span class="ms-key">AUC-ROC</span><span class="ms-val c-cyan">0.94</span></div>
+                  <div class="dps-ml-stat"><span class="ms-key">Trees</span><span class="ms-val">100</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stage 4: GENERATE INSIGHTS -->
+            <div class="dpc-stage" id="dps4">
+              <div class="dps-kpis">
+                <div class="dps-kpi kpi-neg"><div class="kpi-icon">📉</div><div class="kpi-val">−12.4%</div><div class="kpi-lbl">Churn Rate</div></div>
+                <div class="dps-kpi kpi-pos"><div class="kpi-icon">📈</div><div class="kpi-val">+24.1%</div><div class="kpi-lbl">Revenue</div></div>
+                <div class="dps-kpi kpi-acc"><div class="kpi-icon">🎯</div><div class="kpi-val">94.2%</div><div class="kpi-lbl">Accuracy</div></div>
+              </div>
+              <div class="dps-badge badge-ok">✓ Results communicated clearly</div>
+            </div>
+
+          </div><!-- /dpc-body -->
+
+          <!-- Progress bar footer -->
+          <div class="dpc-footer">
+            <div class="dpc-prog-track"><div class="dpc-prog-fill" id="dpcProgFill"></div></div>
+          </div>
+
+        </div><!-- /data-pipeline-card -->
+      </div><!-- /hero-visual -->
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Who I Am</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-avatar-wrap">
+            <div class="avatar-ring"></div>
+            <div class="avatar-inner">
+              <i class="fa-solid fa-brain fa-3x avatar-icon"></i>
+            </div>
+          </div>
+          <div class="about-chips">
+            <span class="chip"><i class="fa-solid fa-graduation-cap"></i> College Student</span>
+            <span class="chip"><i class="fa-solid fa-robot"></i> ML Enthusiast</span>
+            <span class="chip"><i class="fa-solid fa-chart-line"></i> Data Nerd</span>
+          </div>
+        </div>
+        <div class="about-content">
+          <p class="about-text">
+            Hey! I'm <strong>Aadi Singh</strong>, a college student with a deep passion for
+            <strong>Data Science</strong>, <strong>Machine Learning</strong>, and <strong>Artificial Intelligence</strong>.
+          </p>
+          <p class="about-text">
+            I'm focused on building <em>real-world projects</em> that solve meaningful problems — not just theory.
+            Every project I take on pushes me to think analytically, write cleaner code, and communicate data stories better.
+          </p>
+          <p class="about-text">
+            I believe the key to mastering any skill is <strong>discipline and consistency</strong>.
+            I show up every day, keep learning, and trust the process — whether it's debugging a model at midnight
+            or diving into a messy dataset.
+          </p>
+          <div class="about-traits">
+            <div class="trait">
+              <div class="trait-icon"><i class="fa-solid fa-fire"></i></div>
+              <div>
+                <div class="trait-title">Discipline</div>
+                <div class="trait-sub">Consistent daily practice</div>
+              </div>
+            </div>
+            <div class="trait">
+              <div class="trait-icon"><i class="fa-solid fa-flask"></i></div>
+              <div>
+                <div class="trait-title">Real Projects</div>
+                <div class="trait-sub">Applied learning mindset</div>
+              </div>
+            </div>
+            <div class="trait">
+              <div class="trait-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+              <div>
+                <div class="trait-title">Continuous Growth</div>
+                <div class="trait-sub">Always improving</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title">Skills</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-card" id="skill-programming">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap" style="--c: #4da3ff;">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3 class="skill-category">Programming</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-card" id="skill-data-analysis">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap" style="--c: #00e5ff;">
+              <i class="fa-solid fa-table-cells"></i>
+            </div>
+            <h3 class="skill-category">Data Analysis</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NumPy</span>
+          </div>
+        </div>
+
+        <div class="skill-card" id="skill-ml">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap" style="--c: #a855f7;">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <h3 class="skill-category">Machine Learning</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Regression</span>
+            <span class="skill-tag">Classification</span>
+          </div>
+        </div>
+
+        <div class="skill-card" id="skill-viz">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap" style="--c: #f97316;">
+              <i class="fa-solid fa-chart-bar"></i>
+            </div>
+            <h3 class="skill-category">Visualization</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">Seaborn</span>
+          </div>
+        </div>
+
+        <div class="skill-card" id="skill-tools">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap" style="--c: #22c55e;">
+              <i class="fa-solid fa-toolbox"></i>
+            </div>
+            <h3 class="skill-category">Tools</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Jupyter Notebook</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Excel</span>
+          </div>
+        </div>
+        
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title">Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card" id="project-churn">
+          <div class="project-card-top">
+            <div class="project-icon-wrap">
+              <i class="fa-solid fa-car-side"></i>
+            </div>
+            <span class="project-type-badge">ML Classification</span>
+          </div>
+          <h3 class="project-title">Driver Churn Prediction</h3>
+          <p class="project-desc">
+            Built a machine learning classification pipeline to predict whether a driver is likely to churn.
+            Involves data preprocessing, feature engineering, model training, and evaluation using F1-score and ROC-AUC.
+          </p>
+          <div class="project-tech-wrap">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Classification</span>
+          </div>
+          <a href="https://github.com/TecAadi/-Feature-Engineering-Playbook-" class="btn-github" id="project-churn-github" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> View on GitHub
+          </a>
+        </div>
+
+        <div class="project-card" id="project-eda">
+          <div class="project-card-top">
+            <div class="project-icon-wrap" style="--pi: #00e5ff;">
+              <i class="fa-solid fa-magnifying-glass-chart"></i>
+            </div>
+            <span class="project-type-badge" style="--pb: #00e5ff22; --pt: #00e5ff;">EDA &amp; Insights</span>
+          </div>
+          <h3 class="project-title">Exploratory Data Analysis</h3>
+          <p class="project-desc">
+            Performed in-depth exploratory data analysis on a real-world dataset. Uncovered trends, patterns, and outliers
+            through statistical summaries and visual storytelling.
+          </p>
+          <div class="project-tech-wrap">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">NumPy</span>
+            <span class="tech-tag">Matplotlib</span>
+          </div>
+          <a href="https://github.com/TecAadi/customer_behavior" class="btn-github" id="project-eda-github" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> View on GitHub
+          </a>
+        </div>
+
+        <div class="project-card" id="project-ml-mini">
+          <div class="project-card-top">
+            <div class="project-icon-wrap" style="--pi: #a855f7;">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <span class="project-type-badge" style="--pb: #a855f722; --pt: #a855f7;">Prediction Model</span>
+          </div>
+          <h3 class="project-title">ML Prediction Model</h3>
+          <p class="project-desc">
+            Developed an end-to-end machine learning pipeline for a regression prediction problem.
+            Covers data cleaning, feature selection, model training, hyperparameter tuning, and validation.
+          </p>
+          <div class="project-tech-wrap">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Scikit-learn</span>
+            <span class="tech-tag">Regression</span>
+            <span class="tech-tag">NumPy</span>
+          </div>
+          <a href="https://github.com/TecAadi/CAR-PRICE-PREDICTION-PROBLEM" class="btn-github" id="project-ml-mini-github" target="_blank" rel="noopener">
+            <i class="fa-brands fa-github"></i> View on GitHub
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Contact</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="contact-subtitle">
+        I'm always open to collaborating on interesting data Analyst projects or just having a good conversation about ML.
+        Feel free to reach out!
+      </p>
+      <div class="contact-cards">
+        <a href="mailto:aadisingh02wk@gmail.com" class="contact-card" id="contact-email">
+          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div class="contact-info">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">aadisingh02wk@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/aadisingh-data/" target="_blank" rel="noopener" class="contact-card" id="contact-linkedin">
+          <div class="contact-icon" style="--ci: #0a66c2;"><i class="fa-brands fa-linkedin-in"></i></div>
+          <div class="contact-info">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">linkedin.com/in/aadi</span>
+          </div>
+        </a>
+        <a href="https://github.com/TecAadi" target="_blank" rel="noopener" class="contact-card" id="contact-github">
+          <div class="contact-icon" style="--ci: #e2e8f0;"><i class="fa-brands fa-github"></i></div>
+          <div class="contact-info">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">github.com/aadi</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">AS<span class="dot">.</span></span>
+      <p class="footer-copy">© 2026 Aadi Singh — Built with 🔥 and clean data.</p>
+      <div class="footer-links">
+        <a href="#hero" class="footer-link">Top</a>
+        <a href="#projects" class="footer-link">Projects</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="sricpt.js"></script>
+  <script src="animation.js"></script>
+</body>
+</html>
+
+
+<!-- git init
+git add .
+git commit -m "Initial portfolio commit"
+git branch -M main
+git remote add origin https://github.com/your-username/portfolio.git
+git push -u origin main -->
